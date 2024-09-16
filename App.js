@@ -7,9 +7,8 @@ export default function App() {
   const [weather, setWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Função para buscar os dados da API
   const fetchWeather = async () => {
-    const apiKey = '8896e67675fd1806a70c75a8dc553616'; // Insira sua chave da API do OpenWeatherMap
+    const apiKey = '8896e67675fd1806a70c75a8dc553616';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
     try {
@@ -36,7 +35,7 @@ export default function App() {
         value={city}
         onChangeText={(text) => setCity(text)}
       />
-      <Button title="Buscar Clima" onPress={fetchWeather} />
+      <Button title="Search weather" onPress={fetchWeather} />
 
       {errorMessage ? (
         <Text style={styles.error}>{errorMessage}</Text>
