@@ -31,7 +31,7 @@ export default function App() {
       <Text style={styles.title}>Weather App</Text>
       <TextInput
         style={styles.input}
-        placeholder="Digite o nome da cidade"
+        placeholder="Type in the name of your city"
         value={city}
         onChangeText={(text) => setCity(text)}
       />
