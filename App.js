@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
@@ -27,15 +27,21 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Weather App</Text>
+    <ImageBackground
+      source={require('./assets/weather_background.png')} 
+      style={styles.container}
+    >
+      <Text style={styles.title}>Clima Atual</Text>
       <TextInput
         style={styles.input}
-        placeholder="Type in the name of your city"
+        placeholder="Digite o nome da sua cidade"
         value={city}
         onChangeText={(text) => setCity(text)}
+        placeholderTextColor="#ccc"
       />
-      <Button title="Search weather" onPress={fetchWeather} />
+      <TouchableOpacity style={styles.button} onPress={fetchWeather}>
+        <Text style={styles.buttonText}>Buscar Clima</Text>
+      </TouchableOpacity>
 
       {errorMessage ? (
         <Text style={styles.error}>{errorMessage}</Text>
@@ -43,57 +49,78 @@ export default function App() {
         weather && (
           <View style={styles.weatherContainer}>
             <Text style={styles.city}>{weather.name}</Text>
-            <Text style={styles.temperature}>{weather.main.temp}°C</Text>
+            <Text style={styles.temperature}>{Math.round(weather.main.temp)}°C</Text>
             <Text style={styles.description}>{weather.weather[0].description}</Text>
           </View>
         )
       )}
 
-      <StatusBar style="auto" />
-    </View>
+      <StatusBar style="light" />
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
     padding: 20,
+    backgroundColor: '#000',
   },
   title: {
-    fontSize: 24,
+    fontSize: 32,
+    fontWeight: '300',
+    color: '#fff',
     marginBottom: 20,
   },
   input: {
-    height: 40,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    padding: 10,
+    height: 50,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    fontSize: 18,
+    color: '#fff',
     width: '100%',
     marginBottom: 20,
-    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: '#4A90E2',
+    paddingVertical: 15,
+    paddingHorizontal: 60,
+    borderRadius: 25,
+    marginBottom: 30,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
   },
   weatherContainer: {
-    marginTop: 20,
     alignItems: 'center',
+    marginTop: 30,
   },
   city: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 36,
+    fontWeight: '600',
+    color: '#fff',
+    marginBottom: 10,
   },
   temperature: {
-    fontSize: 48,
-    fontWeight: 'bold',
+    fontSize: 64,
+    fontWeight: '300',
+    color: '#fff',
   },
   description: {
-    fontSize: 18,
+    fontSize: 24,
     fontStyle: 'italic',
+    color: '#fff',
+    textTransform: 'capitalize',
+    marginTop: 10,
   },
   error: {
-    marginTop: 20,
+    fontSize: 18,
     color: 'red',
-    fontSize: 16,
+    marginTop: 20,
   },
 });
