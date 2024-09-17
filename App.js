@@ -63,8 +63,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start', // Alinha o conteúdo no topo
     alignItems: 'center',
+    paddingTop: 60, // Define uma distância do topo
     padding: 20,
     backgroundColor: '#000',
   },
