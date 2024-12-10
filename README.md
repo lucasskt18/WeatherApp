@@ -1,6 +1,6 @@
 # WeatherApp
 
-## 📱 WeatherApp - Weather App
+## 📱 WeatherApp
 
 This is a simple weather app created with [React Native](https://reactnative.dev/) and [Expo](https://expo.dev/). It allows users to search for the current weather in any city around the world, showing information such as temperature, weather description, and location.
 
@@ -30,7 +30,7 @@ Before you start, you'll need to have the following tools installed on your mach
 
 Follow the instructions below to clone and run the project in your local environment.
 
-### Step 1: Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/lucasskt18/weather.git
